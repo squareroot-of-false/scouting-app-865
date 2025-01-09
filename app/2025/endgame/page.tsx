@@ -3,7 +3,7 @@
 export default function Page() {
   return (
     <div>
-      <p>home</p>
+      <p>endgame</p>
     </div>
   );
 }
