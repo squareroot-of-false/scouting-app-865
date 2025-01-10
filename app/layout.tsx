@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import NavBar from "./ui/NavBar";
+import StateContainer from "./ui/StateContainer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -13,11 +13,6 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "WARP7 Scouting App",
-  description: "Team 865's match scouting app",
-};
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -25,15 +20,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <title>WARP7 Scouting App</title>
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <div>
+        <StateContainer>
           {children}
-        </div>
-        <div className="absolute bottom-0 w-full">
-          <NavBar />
-        </div>
+        </StateContainer>
       </body>
     </html>
   );

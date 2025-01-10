@@ -4,10 +4,10 @@ export default function Page() {
   return (
     <div className="flex justify-center">
       <div>
-        <text className="text-lg">Auto</text>
+        <p className="text-lg">Auto</p>
       </div>
       <div>
-        
+
       </div>
     </div>
   );

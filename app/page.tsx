@@ -6,7 +6,7 @@ export default function Page() {
   return (
     <div className="flex flex-col justify-center items-center">
       <div className="flex flex-col m-4 w-full justify-center">
-        <text className="text-lg text-center">Home</text>
+        <p className="text-lg text-center">Home</p>
       </div>
       <div className="flex flex-col m-4 w-min items-center">
         <TextField label="Scouter Name" inputName="scouter_name" className="p-2" />

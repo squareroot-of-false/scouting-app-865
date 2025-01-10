@@ -4,7 +4,7 @@ export default function Page() {
   return (
     <div className="flex justify-center">
       <div>
-        <text className="text-lg">Teleop</text>
+        <p className="text-lg">Teleop</p>
       </div>
       <div>
 

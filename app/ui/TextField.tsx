@@ -17,8 +17,9 @@ export default function TextField(props: Props) {
     return (
         <Field className={`flex flex-col justify-center w-min ${props.className}`}>
             <Label className={`text-center ${props.labelClassName}`}>{props.label}</Label>
-            <Input name={props.inputName} type={props.type} className={`border-b-2 border-b-gray-500 bg-transparent ${props.inputClassName}`} />
-            {props.children}
+            <Input name={props.inputName} type={props.type} className={`border-b-2 border-b-gray-500 bg-transparent ${props.inputClassName}`} onChange={(e) => {scouterName = e.target.value;}}>
+                {props.children}
+            </Input>
         </Field>
     );
 }
