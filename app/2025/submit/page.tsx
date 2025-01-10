@@ -2,8 +2,13 @@
 
 export default function Page() {
   return (
-    <div>
-      <p>submit</p>
+    <div className="flex justify-center">
+      <div>
+        <text className="text-lg">Submit</text>
+      </div>
+      <div>
+
+      </div>
     </div>
   );
 }

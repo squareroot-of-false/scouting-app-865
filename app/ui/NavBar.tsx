@@ -43,7 +43,7 @@ export default function NavBar() {
                                     href={'/'}
                                     onClick={() => { globals.setGame(key); }}
                                 >
-                                    <p>{game[1].name}</p>
+                                    <text>{game[1].name}</text>
                                 </Link>
                             </div>
                         </MenuItem>
@@ -59,7 +59,7 @@ export default function NavBar() {
                 className={buttonClass}
                 style={{ width: `${width}%` }}
             >
-                <p>Home</p>
+                <text>Home</text>
             </Link>
 
             {links.map((link) => {
@@ -71,7 +71,7 @@ export default function NavBar() {
                         className={buttonClass}
                         style={{ width: `${width}%` }}
                     >
-                        <p>{link.name}</p>
+                        <text>{link.name}</text>
                     </Link>
                 );
             })}

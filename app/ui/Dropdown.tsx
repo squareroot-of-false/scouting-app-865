@@ -1,13 +1,13 @@
-import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
+import { Menu, MenuButton, MenuItems, AnchorProps } from '@headlessui/react';
 import { CSSProperties, JSX } from 'react';
 
 type Props = {
     children: string | JSX.Element | JSX.Element[] | (() => JSX.Element),
     name: string,
-    anchor: string,
+    anchor: AnchorProps,
     className?: string,
     style?: CSSProperties
-  }
+}
 
 export default function Dropdown(props: Props) {
     return (

@@ -2,8 +2,13 @@
 
 export default function Page() {
   return (
-    <div>
-      <p>teleop</p>
+    <div className="flex justify-center">
+      <div>
+        <text className="text-lg">Teleop</text>
+      </div>
+      <div>
+
+      </div>
     </div>
   );
 }
