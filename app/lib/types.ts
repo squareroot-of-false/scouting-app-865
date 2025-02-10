@@ -1,5 +1,3 @@
-'use client'
-
 export enum Game {
     _2025
 }

@@ -6,10 +6,8 @@ import * as globals from "../lib/types";
 import Dropdown from "./Dropdown";
 import Link from 'next/link';
 import { MenuItem } from "@headlessui/react";
-
-type Props = {
-    game: Game;
-}
+import { useContext } from "react";
+import { AppContext } from "../lib/context";
 
 // Information about different games
 const games = {
@@ -25,8 +23,9 @@ const games = {
     }
 }
 
-export default function NavBar(props: Props) {
-    var links = games[props.game].links;
+export default function NavBar() {
+    const context = useContext(AppContext);
+    const links = games[context.game].links;
     // percentage of the nav bar each thing on it takes up
     const width = 100 / (links.length + 2) - 1; // 2 more than number of dynamic buttons for game chooser and home button, -1% just looks nice
     const buttonClass = "flex h-[48px] grow items-center justify-center rounded-md bg-gray-50 p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3"
@@ -34,7 +33,7 @@ export default function NavBar(props: Props) {
         <div className="flex flex-row justify-evenly">
             {/* game chooser dropdown, styled to blend in with other buttons */}
             <Dropdown
-                name={games[props.game].name}
+                name={games[context.game].name}
                 anchor="top"
                 className={buttonClass}
                 style={{ width: `${width}%` }}
@@ -45,7 +44,7 @@ export default function NavBar(props: Props) {
                             <div>
                                 <Link
                                     href={'/'}
-                                    onClick={() => { props.game = key; }}
+                                    onClick={() => { context.game = key; }}
                                 >
                                     <text>{game[1].name}</text>
                                 </Link>
