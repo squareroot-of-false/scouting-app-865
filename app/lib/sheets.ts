@@ -61,7 +61,7 @@ export async function initSheets() {
     }
 }
 
-async function addRow(values: [][]) {
+async function addRow(values: any[]) {
     await sheets.spreadsheets.values.append({
         spreadsheetId,
         requestBody: {values}
@@ -69,5 +69,5 @@ async function addRow(values: [][]) {
 }
 
 export async function sendToSheets(context: AppData) {
-    
+    addRow([context.scouterName, context.match, context.team, context.position, ])
 }
