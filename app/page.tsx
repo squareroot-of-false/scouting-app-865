@@ -1,29 +1,66 @@
 'use client'
 
-import { useContext } from "react";
+import { useCallback, useContext, useState } from "react";
 import { AppContext } from "./lib/context";
 import TextField from "./ui/TextField";
+import { Field, Label, Radio, RadioGroup } from "@headlessui/react";
+import { AlliancePosition, BluePositions, RedPositions } from "./lib/types";
+import RadioButton from "./ui/RadioButton";
+import Button from "./ui/Button";
 
 export default function Page() {
-  const context = useContext(AppContext);
-  return (
-    <div className="flex flex-col justify-center items-center">
-      <div className="flex flex-col m-4 w-full justify-center">
-        <p className="text-lg text-center">Home</p>
-      </div>
-      <div className="flex flex-col m-4 w-min items-center">
-        <TextField label="Scouter Name" inputName="scouter_name" defaultValue={context.scouterName} onChange={(e) => context.scouterName = e.target.value} className="p-2" />
-        <div className="flex flex-row m-4">
-          <TextField label="Team Number" type="number" inputName="team_number" defaultValue={context.team} onChange={(e) => context.team = e.target.value} className="px-4" inputClassName="w-20 text-center" />
-          <TextField label="Match Number" type="number" inputName="match_number" defaultValue={context.match} onChange={(e) => context.match = e.target.value} className="px-4" inputClassName="w-20 text-center" />
-        </div>
-      </div>
-      <div>
-        {/* put position here */}
-      </div>
-      <div>
-        {/* put field here */}
-      </div>
-    </div>
-  );
+	const context = useContext(AppContext);
+	
+	// in order to clear this page, these have to be tracked here too.
+	// the other pages re-render when you switch back to them after clearing, so it's not necessary on them.
+	const [team, setTeam] = useState(context.team);
+	const [match, setMatch] = useState(context.match);
+	const [position, setPosition] = useState(context.position);
+	const clearPage = () => {
+		setTeam("");
+		setMatch("");
+		setPosition(AlliancePosition.None);
+	};
+	return (
+		<div className="flex flex-col justify-center items-center">
+			<div className="flex flex-col m-4 w-full justify-center">
+				<p className="text-lg text-center">Home</p>
+			</div>
+			<div className="flex flex-col m-4 w-min items-center">
+				<TextField label="Scouter Name" inputName="scouter-name" defaultValue={context.scouterName} onChange={(e) => context.scouterName = e.target.value} className="p-2" inputClassName="text-center" />
+				<div className="flex flex-row m-4">
+					<TextField label="Team Number" type="number" inputName="team-number" value={team} onChange={(e) => { context.team = e.target.value; setTeam(context.team) }} className="px-4" inputClassName="w-20 text-center" />
+					<TextField label="Match Number" type="number" inputName="match-number" value={match} onChange={(e) => { context.match = e.target.value; setMatch(context.match) }} className="px-4" inputClassName="w-20 text-center" />
+				</div>
+				<Button className="m-2" onClick={_ => {context.clear(); clearPage()}}>Clear data</Button>
+			</div>
+			<div className="flex flex-col m-4 w-full items-center">
+				<RadioGroup value={position} onChange={value => {context.position = value; setPosition(context.position)}} className="flex flex-row w-52">
+					<div className="flex flex-col items-right w-1/2">
+						{
+							// blue alliance buttons
+							BluePositions.map(pos => {
+								return (
+									<RadioButton label={pos.toString()} value={pos} keyName={`position-${pos}`} />
+								);
+							})
+						}
+					</div>
+					<div className="flex flex-col items-left w-1/2">
+						{
+							// red alliance buttons
+							RedPositions.map(pos => {
+								return (
+									<RadioButton label={pos.toString()} value={pos} keyName={`position-${pos}`} />
+								);
+							})
+						}
+					</div>
+				</RadioGroup>
+			</div>
+			<div>
+				{/* put field image here */}
+			</div>
+		</div>
+	);
 }

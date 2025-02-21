@@ -7,6 +7,7 @@ type Props = {
     children?: string | JSX.Element | JSX.Element[],
     inputName: string,
     label: string,
+    value?: string,
     defaultValue?: string,
     type?: "text" | "number",
     className?: string,
@@ -19,7 +20,7 @@ export default function TextField(props: Props) {
     return (
         <Field className={`flex flex-col justify-center w-min ${props.className}`}>
             <Label className={`text-center ${props.labelClassName}`}>{props.label}</Label>
-            <Input name={props.inputName} type={props.type} defaultValue={props.defaultValue} className={`border-b-2 border-b-gray-500 bg-transparent ${props.inputClassName}`} onChange={props.onChange}>
+            <Input name={props.inputName} type={props.type} value={props.value} defaultValue={props.defaultValue} className={`border-b-2 border-b-gray-500 bg-transparent ${props.inputClassName}`} onChange={props.onChange}>
                 {props.children}
             </Input>
         </Field>
