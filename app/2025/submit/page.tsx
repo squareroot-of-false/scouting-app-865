@@ -1,6 +1,7 @@
 'use client'
 
 import { AppContext } from "@/app/lib/context";
+import { sendToSheets } from "@/app/lib/sheets";
 import Button from "@/app/ui/Button";
 import TextField from "@/app/ui/TextField";
 import { useContext } from "react";
@@ -14,7 +15,7 @@ export default function Page() {
 			</div>
       <div className="flex flex-col m-4 w-min justify-center">
         <TextField label="Commentary" inputName="submit-commentary" className="m-2" defaultValue={context.commentary} onChange={e => context.commentary = e.target.value} />
-        <Button className="m-2">Submit</Button>
+        <Button className="m-2" onClick={_ => {/*sendToSheets(context)*/}}>Submit</Button>
       </div>
     </div>
   );

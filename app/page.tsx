@@ -21,6 +21,7 @@ export default function Page() {
 		setMatch("");
 		setPosition(AlliancePosition.None);
 	};
+
 	return (
 		<div className="flex flex-col justify-center items-center">
 			<div className="flex flex-col m-4 w-full justify-center">
@@ -59,7 +60,7 @@ export default function Page() {
 				</RadioGroup>
 			</div>
 			<div>
-				{/* put field image here */}
+				
 			</div>
 		</div>
 	);
