@@ -1,40 +1,6 @@
 import { AlliancePosition, Game, games } from "./types";
 import { createContext, useContext } from "react";
 
-export interface AppData {
-    game: Game,
-    scouterName: string,
-    team: string,
-    match: string,
-    position?: AlliancePosition
-    l1CoralTeleop: number
-    l2CoralTeleop: number
-    l3CoralTeleop: number
-    l4CoralTeleop: number
-    algaeNetTeleop: number
-    algaePrcsrTeleop: number
-    foul: number
-    techFoul: number
-    defense: boolean
-};
-
-export const AppContext = createContext<AppData>({
-    game: Game._2025,
-    scouterName: "",
-    team: "",
-    match: "",
-    position: undefined,
-    l1CoralTeleop: 0,
-    l2CoralTeleop: 0,
-    l3CoralTeleop: 0,
-    l4CoralTeleop: 0,
-    algaeNetTeleop: 0,
-    algaeProcessorTeleop: 0,
-    foul: 0,
-    techFoul: 0,
-    defense: false,
-})
-
 export class AppData {
     game: Game = Game._2025;
     scouterName: string = "";
@@ -42,6 +8,15 @@ export class AppData {
     match: string = "";
     position: AlliancePosition = AlliancePosition.None;
     commentary: string = "";
+    l1CoralTeleop: number = 0;
+    l2CoralTeleop: number = 0;
+    l3CoralTeleop: number = 0;
+    l4CoralTeleop: number = 0;
+    algaeNetTeleop: number = 0;
+    algaeProcessorTeleop: number = 0;
+    foul: number = 0;
+    techFoul: number = 0;
+    defense: boolean = false;
 
     public toString(): string {
         return `{\n\tgame: ${games[this.game].name}\n\tscouterName: ${this.scouterName}\n\tteam: ${this.team}\n\tmatch: ${this.match}\n\tposition: ${this.position}}`

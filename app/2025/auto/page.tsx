@@ -7,7 +7,7 @@ export default function Page() {
         <p className="text-lg">Auto</p>
       </div>
       <div>
-
+        
       </div>
     </div>
   );

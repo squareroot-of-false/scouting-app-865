@@ -4,9 +4,10 @@ import { useCallback, useContext, useState } from "react";
 import { AppContext } from "./lib/context";
 import TextField from "./ui/TextField";
 import { Field, Label, Radio, RadioGroup } from "@headlessui/react";
-import { AlliancePosition, BluePositions, RedPositions } from "./lib/types";
+import { AlliancePosition, BluePositions, games, RedPositions } from "./lib/types";
 import RadioButton from "./ui/RadioButton";
 import Button from "./ui/Button";
+import Checkbox from "./ui/Checkbox";
 
 export default function Page() {
 	const context = useContext(AppContext);
@@ -21,6 +22,7 @@ export default function Page() {
 		setMatch("");
 		setPosition(AlliancePosition.None);
 	};
+	const [flipField, setFlipped] = useState(false);
 
 	return (
 		<div className="flex flex-col justify-center items-center">
@@ -59,8 +61,9 @@ export default function Page() {
 					</div>
 				</RadioGroup>
 			</div>
-			<div>
-				
+			<div className="flex flex-col m-4 items-center">
+				<Checkbox value={flipField} onChange={value => setFlipped(value)}>Flip field</Checkbox>
+				<img src={flipField ? games[context.game].field.flipped : games[context.game].field.normal} width="90%" />
 			</div>
 		</div>
 	);

@@ -1,9 +1,18 @@
 export enum Game {
-    _2025
+    _2025,
+}
+
+type GameInfo = {
+    name: string,
+    links: {
+        name: string,
+        href: string
+    }[],
+    field: { normal: string, flipped: string }
 }
 
 // Information about different games
-export const games = {
+export const games: {[game in Game] : GameInfo} = {
     [Game._2025]: {
         name: "Reefscape (2025)",
         // Defines NavBar buttons for this game
@@ -13,8 +22,8 @@ export const games = {
             { name: 'Endgame', href: '/2025/endgame' },
             { name: 'Submit', href: '/2025/submit' }
         ],
-        field: {normal: '/2025/field.png', flipped: '/2025/field_flipped.png'}
-    }
+        field: { normal: '/2025/field.png', flipped: '/2025/field_flipped.png' }
+    },
 }
 
 export enum AlliancePosition {
