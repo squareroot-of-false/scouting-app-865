@@ -1,7 +1,6 @@
 'use client'
 
-import { Game } from "../lib/types";
-import * as globals from "../lib/types";
+import {Game, games} from "../lib/games";
 
 import Dropdown from "./Dropdown";
 import Link from 'next/link';
@@ -11,7 +10,7 @@ import { AppContext } from "../lib/context";
 
 export default function NavBar() {
     const context = useContext(AppContext);
-    const links = globals.games[context.game].links;
+    const links = games[context.game].links;
     // percentage of the nav bar each thing on it takes up
     const width = 100 / (links.length + 2) - 1; // 2 more than number of dynamic buttons for game chooser and home button, -1% just looks nice
     const buttonClass = "flex h-[48px] grow items-center justify-center rounded-md bg-gray-50 p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3"
@@ -19,12 +18,12 @@ export default function NavBar() {
         <div className="flex flex-row justify-evenly">
             {/* game chooser dropdown, styled to blend in with other buttons */}
             <Dropdown
-                name={globals.games[context.game].name}
+                name={games[context.game].name}
                 anchor="top"
                 className={buttonClass}
                 style={{ width: `${width}%` }}
             >
-                {Object.entries(globals.games).map((game, key) => {
+                {Object.entries(games).map((game, key) => {
                     return (
                         <MenuItem key={game[1].name}>
                             <div>
@@ -59,6 +58,9 @@ export default function NavBar() {
                         href={link.href}
                         className={buttonClass}
                         style={{ width: `${width}%` }}
+                        onClick={_ => {
+                            context.gameData = games[context.game].createData();
+                        }}
                     >
                         <text>{link.name}</text>
                     </Link>

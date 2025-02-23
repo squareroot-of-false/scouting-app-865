@@ -1,25 +1,25 @@
-import { AlliancePosition, Game, games } from "./types";
+import { Game, GameData } from "./games";
+import { AlliancePosition } from "./alliance";
 import { createContext, useContext } from "react";
 
 export class AppData {
+    // settings
     game: Game = Game._2025;
+    flipField: boolean = false;
+
+    // not cleared, universal
     scouterName: string = "";
     team: string = "";
     match: string = "";
     position: AlliancePosition = AlliancePosition.None;
+
+    // universal
     commentary: string = "";
-    l1CoralTeleop: number = 0;
-    l2CoralTeleop: number = 0;
-    l3CoralTeleop: number = 0;
-    l4CoralTeleop: number = 0;
-    algaeNetTeleop: number = 0;
-    algaeProcessorTeleop: number = 0;
-    foul: number = 0;
-    techFoul: number = 0;
-    defense: boolean = false;
+
+    gameData?: GameData;
 
     public toString(): string {
-        return `{\n\tgame: ${games[this.game].name}\n\tscouterName: ${this.scouterName}\n\tteam: ${this.team}\n\tmatch: ${this.match}\n\tposition: ${this.position}}`
+        return ""; //return `{\n\tgame: ${games[this.game].name}\n\tscouterName: ${this.scouterName}\n\tteam: ${this.team}\n\tmatch: ${this.match}\n\tposition: ${this.position}}`
     }
 
     public clear() {
@@ -27,15 +27,26 @@ export class AppData {
         this.team = "";
         this.match = "";
         this.commentary = "";
-        this.l1CoralTeleop = 0;
-        this.l2CoralTeleop = 0;
-        this.l3CoralTeleop = 0;
-        this.l4CoralTeleop = 0;
-        this.algaeNetTeleop = 0;
-        this.algaeProcessorTeleop = 0;
-        this.foul = 0;
-        this.techFoul = 0;
-        this.defense = false;
+        if (this.gameData != undefined) {
+            this.gameData.clear();
+        }
+    }
+
+    public serialize(): {} {
+        const generalData = {
+            "game": this.game,
+            "scouter": this.scouterName,
+            "team": this.team,
+            "matchNumber": this.match,
+            "alliancePosition": this.position
+        };
+
+        const gameData = this.gameData?.serialize();
+
+        return {
+            ...generalData,
+            ...gameData
+        };
     }
 };
 

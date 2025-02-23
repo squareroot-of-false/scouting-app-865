@@ -1,6 +1,6 @@
 'use client'
 
-export default function Page() {
+export default function EndgamePage() {
   return (
     <div className="flex justify-center">
       <div>

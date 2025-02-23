@@ -3,7 +3,7 @@
 import { useContext } from "react";
 import { AppContext } from "../../lib/context";
 
-export default function Page() {
+export default function TeleopPage() {
   const context = useContext(AppContext);
   return (
     <div className="flex justify-center">
