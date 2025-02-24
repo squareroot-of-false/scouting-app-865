@@ -19,18 +19,17 @@ export default function NavBar() {
             {/* game chooser dropdown, styled to blend in with other buttons */}
             <Dropdown
                 name={games[context.game].name}
-                anchor="top"
                 className={buttonClass}
                 style={{ width: `${width}%` }}
             >
-                {Object.entries(games).map((game, key) => {
+                {Object.entries(games).map((game) => {
                     return (
-                        <div>
+                        <div key={game[0]}>
                             <MenuItem>
                                 <Link
                                     href={'/'}
                                     onClick={() => {
-                                        context.game = key;
+                                        context.game = game[0] as Game;
                                         context.gameData = games[context.game].createData();
                                     }}
                                 >

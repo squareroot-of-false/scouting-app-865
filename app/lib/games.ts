@@ -1,12 +1,10 @@
-import { AppData } from "./context";
-
 export enum Game {
     Reefscape2025 = "Reefscape2025",
 }
 
 export interface GameData {
     clear(): void,
-    serialize(): {}
+    serialize(): object
 };
 
 export class GameData2025 implements GameData {
@@ -59,7 +57,7 @@ export class GameData2025 implements GameData {
         this.timeClimbedAt = 0;
     }
 
-    serialize(): {} {
+    serialize(): object {
         return {
             "game": Game.Reefscape2025,
             "auto": {

@@ -1,14 +1,15 @@
 'use client'
 
-import { useCallback, useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { AppContext } from "./lib/context";
 import TextField from "./ui/TextField";
-import { Field, Label, Radio, RadioGroup } from "@headlessui/react";
+import { RadioGroup } from "@headlessui/react";
 import { games } from "./lib/games";
 import { AlliancePosition, BluePositions, RedPositions } from "./lib/alliance";
 import RadioButton from "./ui/RadioButton";
 import Button from "./ui/Button";
 import Checkbox from "./ui/Checkbox";
+import Image from "next/image";
 
 export default function HomePage() {
 	const context = useContext(AppContext);
@@ -23,7 +24,7 @@ export default function HomePage() {
 		setMatch("");
 		setPosition(AlliancePosition.None);
 	};
-	const [flipField, setFlipped] = useState(false);
+	const [, setFlipped] = useState(false);
 
 	return (
 		<div className="flex flex-col justify-center items-center">
@@ -36,7 +37,7 @@ export default function HomePage() {
 					<TextField type="number" inputName="team-number" value={team} onChange={(e) => { context.team = e.target.value; setTeam(context.team) }} className="px-4" inputClassName="w-20 text-center">Team Number</TextField>
 					<TextField type="number" inputName="match-number" value={match} onChange={(e) => { context.match = e.target.value; setMatch(context.match) }} className="px-4" inputClassName="w-20 text-center">Match Number</TextField>
 				</div>
-				<Button className="m-2" onClick={_ => { context.clear(); clearPage() }}>Clear data</Button>
+				<Button className="m-2" onClick={() => { context.clear(); clearPage() }}>Clear data</Button>
 			</div>
 			<div className="flex flex-col m-4 w-full items-center">
 				<RadioGroup value={position} onChange={value => { context.position = value; setPosition(context.position) }} className="flex flex-row w-52">
@@ -45,7 +46,7 @@ export default function HomePage() {
 							// blue alliance buttons
 							BluePositions.map(pos => {
 								return (
-									<RadioButton label={pos.toString()} value={pos} keyName={`position-${pos}`} />
+									<RadioButton label={pos.toString()} value={pos} key={`position-${pos}`} />
 								);
 							})
 						}
@@ -55,7 +56,7 @@ export default function HomePage() {
 							// red alliance buttons
 							RedPositions.map(pos => {
 								return (
-									<RadioButton label={pos.toString()} value={pos} keyName={`position-${pos}`} />
+									<RadioButton label={pos.toString()} value={pos} key={`position-${pos}`} />
 								);
 							})
 						}
@@ -64,7 +65,7 @@ export default function HomePage() {
 			</div>
 			<div className="flex flex-col m-4 items-center">
 				<Checkbox value={context.flipField} onChange={value => { context.flipField = value; setFlipped(context.flipField) }}>Flip field</Checkbox>
-				<img src={context.flipField ? games[context.game].field.flipped : games[context.game].field.normal} width="90%" />
+				<Image src={context.flipField ? games[context.game].field.flipped : games[context.game].field.normal} sizes="90%" alt="field image" />
 			</div>
 		</div>
 	);

@@ -10,10 +10,9 @@ type Props = {
 };
 
 export default function Checkbox(props: Props) {
-  let [value, setValue] = useState(props.value);
-  let onChange = (checked: boolean) => {
+  const [value, setValue] = useState(props.value);
+  const onChange = (checked: boolean) => {
       if (props.onChange != undefined) {
-          console.log(checked);
           props.onChange(checked); setValue(checked);
       }
   };

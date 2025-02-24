@@ -4,7 +4,6 @@ import { Field, Label, Radio } from "@headlessui/react";
 
 type Props = {
     value: string,
-    keyName: string,
     label: string,
     radioClass?: string,
     innerClass?: string,
@@ -14,7 +13,7 @@ type Props = {
 
 export default function RadioButton(props: Props) {
     return (
-        <Field key={props.keyName} className={`flex flex-row ${props.className}`}>
+        <Field className={`flex flex-row ${props.className}`}>
             <Radio
                 value={props.value}
                 className={`group flex size-5 items-center justify-center rounded-full border bg-gray-600 data-[checked]:bg-blue-400 mx-2 ${props.radioClass}`}

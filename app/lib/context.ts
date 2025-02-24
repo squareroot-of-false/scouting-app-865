@@ -1,6 +1,6 @@
 import { Game, GameData, GameData2025, games } from "./games";
 import { AlliancePosition } from "./alliance";
-import { createContext, useContext } from "react";
+import { createContext } from "react";
 
 export class AppData {
     // settings
@@ -40,7 +40,7 @@ export class AppData {
         }
     }
 
-    public serialize(): {} {
+    public serialize(): object {
         const generalData = {
             "scouter": this.scouterName,
             "team": this.team,

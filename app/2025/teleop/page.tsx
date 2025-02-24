@@ -6,7 +6,7 @@ import ScoreCounter from "@/app/ui/ScoreCounter";
 import { useContext } from "react";
 
 export default function TeleopPage() {
-  let context = useContext(AppContext);
+  const context = useContext(AppContext);
 
   return (
     <div className="flex flex-col justify-center items-center">

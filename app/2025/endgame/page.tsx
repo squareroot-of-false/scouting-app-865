@@ -2,12 +2,11 @@
 
 import { AppContext } from "@/app/lib/context";
 import Checkbox from "@/app/ui/Checkbox";
-import ScoreCounter from "@/app/ui/ScoreCounter";
 import TextField from "@/app/ui/TextField";
 import { useContext } from "react";
 
 export default function EndgamePage() {
-  let context = useContext(AppContext);
+  const context = useContext(AppContext);
 
   return (
     <div className="flex flex-col justify-center items-center">
