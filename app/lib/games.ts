@@ -24,7 +24,6 @@ export class GameData2025 implements GameData {
     teleopBarge: number = 0;
     teleopAlgaeProcessor: number = 0;
     fouls: number = 0;
-    techFouls: number = 0;
     defense: boolean = false;
 
     // endgame
@@ -48,7 +47,6 @@ export class GameData2025 implements GameData {
         this.teleopBarge = 0;
         this.teleopAlgaeProcessor = 0;
         this.fouls = 0;
-        this.techFouls = 0;
         this.defense = false;
 
         this.park = false;
@@ -76,7 +74,6 @@ export class GameData2025 implements GameData {
                 "barge": this.teleopBarge,
                 "algae_processor": this.teleopAlgaeProcessor,
                 "fouls": this.fouls,
-                "tech_fouls": this.techFouls,
                 "defense": this.defense
             },
             "endgame": {

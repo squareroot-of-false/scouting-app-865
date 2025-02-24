@@ -14,14 +14,17 @@ export default function TeleopPage() {
         <p className="text-lg text-center">Teleop</p>
       </div>
       <div className="flex flex-col m-4 w-full items-center">
-        <ScoreCounter className="m-4" initialValue={context.getData().teleopCoralLvl1} onChange={change => context.getData().teleopCoralLvl1 += change}>Level 1 Coral</ScoreCounter>
-        <ScoreCounter className="m-4" initialValue={context.getData().teleopCoralLvl2} onChange={change => context.getData().teleopCoralLvl2 += change}>Level 2 Coral</ScoreCounter>
-        <ScoreCounter className="m-4" initialValue={context.getData().teleopCoralLvl3} onChange={change => context.getData().teleopCoralLvl3 += change}>Level 3 Coral</ScoreCounter>
-        <ScoreCounter className="m-4" initialValue={context.getData().teleopCoralLvl4} onChange={change => context.getData().teleopCoralLvl4 += change}>Level 4 Coral</ScoreCounter>
+        <div className="flex flex-row">
+          <ScoreCounter className="m-4" initialValue={context.getData().teleopCoralLvl1} onChange={change => context.getData().teleopCoralLvl1 += change}>Level 1 Coral</ScoreCounter>
+          <ScoreCounter className="m-4" initialValue={context.getData().teleopCoralLvl2} onChange={change => context.getData().teleopCoralLvl2 += change}>Level 2 Coral</ScoreCounter>
+        </div>
+        <div className="flex flex-row">
+          <ScoreCounter className="m-4" initialValue={context.getData().teleopCoralLvl3} onChange={change => context.getData().teleopCoralLvl3 += change}>Level 3 Coral</ScoreCounter>
+          <ScoreCounter className="m-4" initialValue={context.getData().teleopCoralLvl4} onChange={change => context.getData().teleopCoralLvl4 += change}>Level 4 Coral</ScoreCounter>
+        </div>
         <ScoreCounter className="m-4" initialValue={context.getData().teleopAlgaeProcessor} onChange={change => context.getData().teleopAlgaeProcessor += change}>Algae Processor</ScoreCounter>
         <ScoreCounter className="m-4" initialValue={context.getData().teleopBarge} onChange={change => context.getData().teleopBarge += change}>Barge</ScoreCounter>
         <ScoreCounter className="m-4" initialValue={context.getData().fouls} onChange={change => context.getData().fouls += change}>Fouls</ScoreCounter>
-        <ScoreCounter className="m-4" initialValue={context.getData().techFouls} onChange={change => context.getData().techFouls += change}>Tech fouls</ScoreCounter>
         <Checkbox className="m-4" value={context.getData().defense} onChange={checked => context.getData().defense = checked}>Defense</Checkbox>
       </div>
     </div>
