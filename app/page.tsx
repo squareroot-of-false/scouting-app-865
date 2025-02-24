@@ -31,7 +31,7 @@ export default function HomePage() {
 				<p className="text-lg text-center">Home</p>
 			</div>
 			<div className="flex flex-col m-4 w-min items-center">
-				<TextField inputName="scouter-name" value={context.scouterName} onChange={(e) => context.scouterName = e.target.value} className="p-2" inputClassName="text-center">Scouter Name</TextField>
+				<TextField inputName="scouter-name" defaultValue={context.scouterName} onChange={(e) => context.scouterName = e.target.value} className="p-2" inputClassName="text-center">Scouter Name</TextField>
 				<div className="flex flex-row m-4">
 					<TextField type="number" inputName="team-number" value={team} onChange={(e) => { context.team = e.target.value; setTeam(context.team) }} className="px-4" inputClassName="w-20 text-center">Team Number</TextField>
 					<TextField type="number" inputName="match-number" value={match} onChange={(e) => { context.match = e.target.value; setMatch(context.match) }} className="px-4" inputClassName="w-20 text-center">Match Number</TextField>

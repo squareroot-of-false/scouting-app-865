@@ -14,8 +14,8 @@ export default function SubmitPage() {
         <p className="text-lg text-center">Submit</p>
       </div>
       <div className="flex flex-col m-4 w-min justify-center">
-        <TextField label="Commentary" inputName="submit-commentary" className="m-2" defaultValue={context.commentary} onChange={e => context.commentary = e.target.value} />
-        <Button className="m-2" onClick={_ => { sendReport(context) }}>Submit</Button>
+        <TextField inputName="submit-commentary" className="m-2" defaultValue={context.commentary} onChange={e => context.commentary = e.target.value}>Commentary</TextField>
+        <Button className="m-2" onClick={_ => { sendReport(context); context.clear(); }}>Submit</Button>
       </div>
     </div>
   );

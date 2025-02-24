@@ -18,7 +18,7 @@ export default function EndgamePage() {
         <Checkbox className="m-4" value={context.getData().park} onChange={checked => context.getData().park = checked}>Park</Checkbox>
         <Checkbox className="m-4" value={context.getData().shallow} onChange={checked => context.getData().shallow = checked}>Shallow</Checkbox>
         <Checkbox className="m-4" value={context.getData().deep} onChange={checked => context.getData().deep = checked}>Deep</Checkbox>
-        <TextField inputName="time-climbed-at" className="m-4" type="number" value={context.getData().timeClimbedAt.toString()} onChange={e => context.getData().timeClimbedAt = e.target.valueAsNumber} inputClassName="w-30 text-center">Time climbed at</TextField>
+        <TextField inputName="time-climbed-at" className="m-4" type="number" defaultValue={context.getData().timeClimbedAt.toString()} onChange={e => context.getData().timeClimbedAt = e.target.valueAsNumber} inputClassName="w-30 text-center">Time climbed at</TextField>
       </div>
     </div>
   );

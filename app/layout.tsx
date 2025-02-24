@@ -24,9 +24,9 @@ export default function RootLayout({
         <title>WARP7 Scouting App</title>
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`flex flex-col min-h-dvh ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-          <div>
+          <div className="overflow-y-scroll">
               {children}
           </div>
           <div className="absolute bottom-0 w-full">
