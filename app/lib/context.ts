@@ -12,7 +12,7 @@ export class AppData {
     team: string = "";
     match: string = "";
     position: AlliancePosition = AlliancePosition.None;
-    isTest: boolean = true;
+    isTest: boolean = process.env.NODE_ENV == "development";
 
     // universal
     commentary: string = "";
