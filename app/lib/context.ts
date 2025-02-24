@@ -1,10 +1,10 @@
-import { Game, GameData } from "./games";
+import { Game, GameData, GameData2025, games } from "./games";
 import { AlliancePosition } from "./alliance";
 import { createContext, useContext } from "react";
 
 export class AppData {
     // settings
-    game: Game = Game._2025;
+    game: Game = Game.Reefscape2025;
     flipField: boolean = false;
 
     // not cleared, universal
@@ -12,14 +12,22 @@ export class AppData {
     team: string = "";
     match: string = "";
     position: AlliancePosition = AlliancePosition.None;
+    isTest: boolean = true;
 
     // universal
     commentary: string = "";
 
-    gameData?: GameData;
+    gameData: GameData = games[this.game].createData();
 
     public toString(): string {
         return ""; //return `{\n\tgame: ${games[this.game].name}\n\tscouterName: ${this.scouterName}\n\tteam: ${this.team}\n\tmatch: ${this.match}\n\tposition: ${this.position}}`
+    }
+
+    public getData() {
+        switch (this.game) {
+        case Game.Reefscape2025:
+            return this.gameData as GameData2025;
+        }
     }
 
     public clear() {
@@ -34,18 +42,20 @@ export class AppData {
 
     public serialize(): {} {
         const generalData = {
-            "game": this.game,
             "scouter": this.scouterName,
             "team": this.team,
-            "matchNumber": this.match,
-            "alliancePosition": this.position
+            "match_number": this.match,
+            "alliance_position": this.position,
+            "is_test": this.isTest
         };
 
         const gameData = this.gameData?.serialize();
 
         return {
             ...generalData,
-            ...gameData
+            "game_data": {
+                ...gameData
+            }
         };
     }
 };

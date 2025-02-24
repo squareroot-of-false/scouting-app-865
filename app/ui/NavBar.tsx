@@ -1,6 +1,6 @@
 'use client'
 
-import {Game, games} from "../lib/games";
+import { Game, games } from "../lib/games";
 
 import Dropdown from "./Dropdown";
 import Link from 'next/link';
@@ -13,7 +13,7 @@ export default function NavBar() {
     const links = games[context.game].links;
     // percentage of the nav bar each thing on it takes up
     const width = 100 / (links.length + 2) - 1; // 2 more than number of dynamic buttons for game chooser and home button, -1% just looks nice
-    const buttonClass = "flex h-[48px] grow items-center justify-center rounded-md bg-gray-50 p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3"
+    const buttonClass = "flex h-[48px] grow items-center justify-center rounded-md bg-gray-900 p-3 text-sm font-medium hover:bg-sky-300 hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3"
     return (
         <div className="flex flex-row justify-evenly">
             {/* game chooser dropdown, styled to blend in with other buttons */}
@@ -25,16 +25,19 @@ export default function NavBar() {
             >
                 {Object.entries(games).map((game, key) => {
                     return (
-                        <MenuItem key={game[1].name}>
-                            <div>
+                        <div>
+                            <MenuItem>
                                 <Link
                                     href={'/'}
-                                    onClick={() => { context.game = key; }}
+                                    onClick={() => {
+                                        context.game = key;
+                                        context.gameData = games[context.game].createData();
+                                    }}
                                 >
-                                    <text>{game[1].name}</text>
+                                    <p>{game[1].name}</p>
                                 </Link>
-                            </div>
-                        </MenuItem>
+                            </MenuItem>
+                        </div>
                     );
                 })}
             </Dropdown>
@@ -58,11 +61,8 @@ export default function NavBar() {
                         href={link.href}
                         className={buttonClass}
                         style={{ width: `${width}%` }}
-                        onClick={_ => {
-                            context.gameData = games[context.game].createData();
-                        }}
                     >
-                        <text>{link.name}</text>
+                        <p>{link.name}</p>
                     </Link>
                 );
             })}

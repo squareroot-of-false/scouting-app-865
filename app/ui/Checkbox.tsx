@@ -1,4 +1,5 @@
 import { Checkbox as HeadlessCheckbox } from '@headlessui/react'
+import { useState } from 'react';
 
 type Props = {
   value?: boolean,
@@ -9,12 +10,19 @@ type Props = {
 };
 
 export default function Checkbox(props: Props) {
+  let [value, setValue] = useState(props.value);
+  let onChange = (checked: boolean) => {
+      if (props.onChange != undefined) {
+          console.log(checked);
+          props.onChange(checked); setValue(checked);
+      }
+  };
   return (
     <div className={`flex flex-row ${props.className}`}>
       <HeadlessCheckbox
-        checked={props.value}
-        onChange={props.onChange}
-        className="group block size-4 rounded border bg-white data-[checked]:bg-blue-500"
+        checked={value}
+        onChange={onChange}
+        className="group block size-4 rounded border bg-gray-600 data-[checked]:bg-blue-500"
       >
         {/* Checkmark icon */}
         <svg className="stroke-white opacity-0 group-data-[checked]:opacity-100" viewBox="0 0 14 14" fill="none">
