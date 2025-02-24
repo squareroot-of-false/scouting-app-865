@@ -65,7 +65,12 @@ export default function HomePage() {
 			</div>
 			<div className="flex flex-col m-4 items-center">
 				<Checkbox value={context.flipField} onChange={value => { context.flipField = value; setFlipped(context.flipField) }}>Flip field</Checkbox>
-				<Image src={context.flipField ? games[context.game].field.flipped : games[context.game].field.normal} sizes="90%" alt="field image" />
+				<Image
+					src={context.flipField ? games[context.game].field.flipped : games[context.game].field.normal}
+					width={0}
+					height={0}
+					style={{ width: "90%", height: "auto" }}
+					alt="field image" />
 			</div>
 		</div>
 	);
