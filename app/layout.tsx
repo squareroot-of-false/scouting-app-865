@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import NavBar from "./ui/NavBar";
@@ -24,14 +23,14 @@ export default function RootLayout({
         <title>WARP7 Scouting App</title>
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`flex flex-col gap-auto h-dvh static ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-          <div>
-              {children}
-          </div>
-          <div className="absolute bottom-0 w-full">
-              <NavBar />
-          </div>
+        <div className="flex-grow overflow-y-auto">
+          {children}
+        </div>
+        <div className="sticky bottom-0 w-full pb-2 bg-[--background]">
+          <NavBar />
+        </div>
       </body>
     </html>
   );
